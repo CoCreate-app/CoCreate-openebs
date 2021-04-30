@@ -1,0 +1,13 @@
+{{- range .Values.storageClasses }}
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: {{ .name }}
+parameters:
+  # Set the number of data replicas ("replication factor")
+  repl: "{{ .replicas }}"
+  # Set the export transport protocol
+  protocol: {{ .protocol }}
+provisioner: {{ .provisioner }}
+{{- end }}
