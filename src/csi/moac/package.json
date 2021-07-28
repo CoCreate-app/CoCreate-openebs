@@ -1,0 +1,61 @@
+{
+  "name": "moac",
+  "version": "0.1.0",
+  "description": "Mayastor's control plane",
+  "main": "index.js",
+  "bin": {
+    "moac": "./index.js",
+    "mbus": "./mbus.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openebs/Mayastor.git",
+    "directory": "csi/moac"
+  },
+  "scripts": {
+    "prepare": "./bundle_protos.sh",
+    "clean": "rm -f csi.js node.js replica.js pool.js nexus.js watcher.js node_operator.js pool_operator.js volume.js volumes.js volume_operator.js workq.js *.js.map",
+    "purge": "rm -rf node_modules proto csi.js node.js replica.js pool.js nexus.js watcher.js node_operator.js pool_operator.js volume.js volumes.js volume_operator.js workq.js *.js.map",
+    "compile": "tsc --pretty",
+    "start": "./index.js",
+    "test": "mocha test/index.js",
+    "check": "semistandard --verbose",
+    "fix": "semistandard --fix"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.5",
+    "@types/lodash": "^4.14.161",
+    "client-node-fixed-watcher": "^0.13.6",
+    "express": "^4.17.1",
+    "grpc-promise": "^1.4.0",
+    "grpc-uds": "^0.1.6",
+    "js-yaml": "^3.14.0",
+    "lodash": "^4.17.20",
+    "nats": "^2.0.0-27",
+    "sleep-promise": "^8.0.1",
+    "winston": "^3.3.3",
+    "yargs": "^16.0.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "dirty-chai": "^2.0.1",
+    "mocha": "^8.1.3",
+    "semistandard": "^16.0.0",
+    "sinon": "^9.1.0",
+    "source-map-support": "^0.5.19",
+    "typescript": "^4.0.3",
+    "wtfnode": "^0.8.3"
+  },
+  "files": [
+    "*.js",
+    "crds/*.yaml",
+    "bundle_protos.sh"
+  ],
+  "semistandard": {
+    "env": [
+      "mocha",
+      "node"
+    ]
+  }
+}
